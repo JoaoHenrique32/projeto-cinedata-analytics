@@ -1,1 +1,29 @@
 
+resources:
+  jobs:
+    job_cinedata:
+      name: job_cinedata
+      schedule:
+        quartz_cron_expression: 44 0 6 * * ?
+        timezone_id: America/Sao_Paulo
+        pause_status: UNPAUSED
+      tasks:
+        - task_key: to_bronze
+          notebook_task:
+            notebook_path: /Workspace/Users/joaohca3@gmail.com/Projeto_CineData_Analytics/Landing_to_Bronze
+            source: WORKSPACE
+        - task_key: to_silver
+          depends_on:
+            - task_key: to_bronze
+          notebook_task:
+            notebook_path: /Workspace/Users/joaohca3@gmail.com/Projeto_CineData_Analytics/Bronze_to_Silver
+            source: WORKSPACE
+        - task_key: to_gold
+          depends_on:
+            - task_key: to_silver
+          notebook_task:
+            notebook_path: /Workspace/Users/joaohca3@gmail.com/Projeto_CineData_Analytics/Silver_to_Gold
+            source: WORKSPACE
+      queue:
+        enabled: true
+      performance_target: PERFORMANCE_OPTIMIZED
