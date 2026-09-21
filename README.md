@@ -105,11 +105,3 @@ Validação da estabilidade do *Star Schema* respondendo às exigências analít
 O pipeline está completamente automatizado através de um Job estruturado em *DAG* (Grafo Acíclico Dirigido):
 * **Dependências:** `Task_Silver` obriga o sucesso de `Task_Bronze`; `Task_Gold` exige o sucesso de `Task_Silver`.
 * **Ambiente:** Serverless Compute, garantindo gestão de recursos escalável e sem configuração de *cluster* manual.
-
----
-
-## 👨‍💻 Autor
-
-**João Henrique Corrêa de Araújo**  
-Estudante de Ciência da Computação (7º período) - Faculdade Nova Roma.  
-*Repositório construído para demonstrar capacidade avançada em engenharia de dados, modelagem dimensional e resiliência de código.*
